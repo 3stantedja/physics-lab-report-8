@@ -5,7 +5,7 @@
 % \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{wrapfig}
-% \usepackage{booktabs}
+\usepackage{booktabs}
 
 \usepackage{microtype}
 \usepackage{lmodern}
@@ -30,23 +30,75 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \graphicspath{ {./images/} }
+\newcommand{\dist}[1] {\(d_{\mathrm{#1}}\)}
+\newcommand{\mdist}[1] {d_{\mathrm{#1}}}
 
-\title{Experiment 8 -- Focal length of a converging lens}
+\title{Experiment 8 --- Focal length of a converging lens}
 \author{Nero Su, Laurence Amadeus Tristan}
 \date{25 March 2019}
 
 \begin{document}
 \maketitle
 \section{Purpose}
+The purpose of this experiment is to compare the focal length of a lens obtained from the y-intercept of a linear equation and the gradient of another linear equation using measured values of \(d_{\mathrm{o}}\) and \(d_{\mathrm{i}}\) of a converging lens.
 
 \section{Theory}
+For a thin lens, the distance between an object (or in this case the aperture) with the lens \dist{o} and the distance between the lens and the image \dist{i} is related to the focal length of the lens \(f\) by the equation
+\begin{align} \label{eq:t1}
+  \frac{1}{\mdist{o}} + \frac{1}{\mdist{i}} = \frac{1}{f} && \begin{cases}
+    +f& \text{if lens is convex/converging} \\
+    -f& \text{if lens is concave/diverging}
+  \end{cases}
+\end{align}
 
+\begin{tabbing}
+  where \= \(f\) \= = focal length of lens \\
+  \> \dist{i} \> = distance between image and lens \\
+  \> \dist{o} \> = distance between object and lens.
+\end{tabbing}
+
+If the focal length \(f\) is positive, it indicates that it is a convex/converging lens. The opposite is true for a concave/diverging lens.
+
+\newpage
 \section{Procedure}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{apparatus.pdf}
+  \caption{A rough diagram of the apparatus. The grey bar is the optical bench.}
+  \label{fig:p1}
+\end{figure}
+The experiment was done on a bar called an optical bench. Here, we could place various objects that were able to be secured onto the optical bench, like the aperture (which is arrow-shaped), the lens, and the screen. With this particular optical bench (not shown in the diagram) we could measure the distance between the aperture and other objects on the bench, as there is an embedded ruler on the side of the optical bench.
+
+First, we set up the apparatus as shown roughly in the diagram, with the aperture at the 0 cm mark and the light source being placed right behind the aperture. We then made sure that the apparatus was accurate by checking if the bench is stable enough on the laboratory bench, and if the aperture, convex lens (L1), and screen were parallel to each other and at the same height. 
+
+We then turned on the light source. Then, we varied the distance do by moving the convex lens L1 along the optical bench. Afterwards, we moved the screen along the optical bench until the image looked as sharp as possible. It is important that a standard for sharpness is established first before starting the experiment.
+
+With the apparatus in place, we recorded the values for \dist{o} and \(\mdist{o} + \mdist{i}\) by looking at the optical bench’s inbuilt ruler. After that, we repeated the experiment, each time increasing the distance do by \SI{1}{\cm}
 
 \section{Data}
+\begin{table}[!h]
+  \centering
+  \begin{tabular}{cc}
+    \toprule
+    {\(\mdist{o}\)/\(\pm \SI{0.1}{\cm}\)} & {\(\mdist{o} + \mdist{i}\)/\(\pm \SI{0.2}{\cm}\)} \\
+    \midrule
+    15.0 & 59.0 \\
+    16.0 & 54.1 \\
+    17.0 & 51.0 \\
+    18.0 & 48.9 \\
+    19.0 & 47.7 \\
+    20.0 & 46.8 \\
+    21.0 & 46.4 \\
+    22.0 & 46.1 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Experimental result for L1}
+  \label{table:d1}
+\end{table}
 
 \section{Analysis}
-
+\begin{table}
+\end{table}
 \section{Discussion}
 
 \end{document}
