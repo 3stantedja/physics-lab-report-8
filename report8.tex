@@ -1,6 +1,5 @@
 \documentclass[letter,12pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
 \usepackage[margin=1in]{geometry}
 
 % \usepackage{tikz}
@@ -72,9 +71,9 @@ The experiment was done on a bar called an optical bench. Here, we could place v
 
 First, we set up the apparatus as shown roughly in the diagram, with the aperture at the \SI{0}{\cm} mark and the light source being placed right behind the aperture. We then made sure that the apparatus was accurate by checking if the bench is stable enough on the laboratory bench, and if the aperture, convex lens (L1), and screen were parallel to each other and at the same height. 
 
-We then turned on the light source. Then, we varied the distance do by moving the convex lens L1 along the optical bench. Afterwards, we moved the screen along the optical bench until the image looked as sharp as possible. It is important that a standard for sharpness is established first before starting the experiment.
+We then turned on the light source. Then, we varied the distance \dist{o} by moving the convex lens L1 along the optical bench. Afterwards, we moved the screen along the optical bench until the image looked as sharp as possible. It is important that a standard for sharpness is established first before starting the experiment.
 
-With the apparatus in place, we recorded the values for \dist{o} and \(\mdist{o} + \mdist{i}\) by looking at the optical bench’s built-in ruler. After that, we repeated the experiment, each time increasing the distance do by \SI{1}{\cm}
+With the apparatus in place, we recorded the values for \dist{o} and \(\mdist{o} + \mdist{i}\) by looking at the optical bench’s built-in ruler. After that, we repeated the experiment, each time increasing the distance \dist{o} by \SI{1}{\cm}
 
 \pagebreak[4]
 \section{Data}
@@ -120,7 +119,7 @@ First, we need to make two linear equations out of \eqref{eq:t1}. Here, we make 
     \num{15.0(1)} & \num{44.0(3)} & \num{59.0(2)} & \num{0.0667(4)} & \num{0.0227(2)} & \num{660(9)} \\
     \num{16.0(1)} & \num{38.1(3)} & \num{54.1(2)} & \num{0.0625(4)} & \num{0.0263(2)} & \num{610(9)} \\
     \num{17.0(1)} & \num{34.0(3)} & \num{51.0(2)} & \num{0.0588(3)} & \num{0.0294(3)} & \num{578(9)} \\
-    \num{18.0(1)} & \num{30.9(3)} & \num{48.9(2)} & \num{0.0556(3)} & \num{0.0324(3)} & \num{556(9)} \\
+    \num{18.0(1)} & \num{30.9(3)} & \num{48.9(2)} & \num{0.0556(3)} & \num{0.0324(3)} & \num{556(8)} \\
     \num{19.0(1)} & \num{28.7(3)} & \num{47.7(2)} & \num{0.0526(3)} & \num{0.0348(4)} & \num{545(9)} \\
     \num{20.0(1)} & \num{26.8(3)} & \num{46.8(2)} & \num{0.0500(3)} & \num{0.0373(4)} & \num{536(9)} \\
     \num{21.0(1)} & \num{25.4(3)} & \num{46.4(2)} & \num{0.0476(2)} & \num{0.0394(5)} & \num{533(9)} \\
@@ -131,20 +130,115 @@ First, we need to make two linear equations out of \eqref{eq:t1}. Here, we make 
 \end{table}
 \nopagebreak[4]
 
-To get the value for \dist{i}, we subtract \dist{o} from (\(\mdist{o} + \mdist{i}\)), like so:
+Getting the values for \dist{i} is relatively straightforward, like so:
 \begin{align*}
-  \mdist{i} &= 
+    \mdist{i} = (\mdist{i} + \mdist{o}) - \mdist{o} &&
+     \delta\mdist{i} = \delta(\mdist{i} + \mdist{o}) + \delta\mdist{o}
 \end{align*}
 
+Likewise, getting values for \(\tfrac{1}{\mdist{i}}\), \(\frac{1}{\mdist{o}}\), and \(\mdist{o} \mdist{i}\) are trivial enough that it is unnecessary to show. The following shows the way the uncertainties for these values are obtained.
+\begin{align*}
+  \delta \left(\frac{1}{\mdist{i}} \right) &= \left|\frac{1}{\mdist{i}} \right| | -1| \left(\frac{\delta\mdist{i}}{\mdist{i}} \right) \\
+  \delta \left(\frac{1}{\mdist{o}} \right) &= \left|\frac{1}{\mdist{o}} \right| | -1| \left(\frac{\delta\mdist{o}}{\mdist{o}} \right) \\
+  \delta (\mdist{o}\mdist{i}) &= |\mdist{o}\mdist{i}| \left(\frac{\delta\mdist{o}}{\mdist{o}} + \frac{\delta\mdist{i}}{\mdist{i}}\right)
+\end{align*}
+
+Here, we plot two linear equations (\eqref{eq:a1} and \eqref{eq:a2}) separately, with one being \(\frac{1}{\mdist{o}}\) against \(\frac{1}{\mdist{i}}\) for Figure \ref{fig:plot1}, and \(\mdist{o} \mdist{i}\) against \((\mdist{i} + \mdist{o})\) for Figure \ref{fig:plot2}.
+
+\begin{figure}[!hp]
+  \centering
+  \includegraphics[width=\textwidth]{plot1.pdf}
+  \caption{Plot of \eqref{eq:a1}}
+  \label{fig:plot1}
+\end{figure}
+
+To determine the gradient and the y-intercept of Figure \ref{fig:plot1}, we temporarily substitute Equation \ref{eq:a1} for the linear equation~\(y = mx + b\).
+\begin{align*}
+  m_{\mathrm{max}} &= \frac{\SI{70.2d-3}{\cm^{-1}} - \SI{42.5d-3} {\cm^{-1}}}{\SI{20.0d-3}{\cm^{-1}} - \SI{44.0d-3}{\cm^{-1}}} \\
+  &= -1.24 \\
+  m_{\mathrm{best}} &= \frac{\SI{69.8d-3}{\cm^{-1}} - \SI{42.8d-3}{\cm^{-1}}}{\SI{20.0d-3}{\cm^{-1}} - \SI{44.0d-3}{\cm^{-1}}} \\ 
+  &= -1.13 \\
+  m_{\mathrm{min}} &= \frac{\SI{69.4d-3}{\cm^{-1}} - \SI{43.2d-3} {\cm^{-1}}}{\SI{20.0d-3}{\cm^{-1}} - \SI{44.0d-3}{\cm^{-1}}} \\
+  &= -1.09 \\
+  \delta m &= -1.13 - (-1.24) \\
+  &= -0.11 \\
+  &\approx -0.1 \ \text{(1 s.f.)}, \\
+  \therefore m &= \num{-1.1(1)}
+\end{align*} 
+\begin{align*}
+  b_{\mathrm{max}} &= \SI{70.2d-3}{\cm^{-1}} - (-1.24)(\SI{20d-3}{\cm^{-1}}) \\
+  &= \SI{0.0922}{\cm^{-1}} \\
+  b_{\mathrm{best}} &= \SI{69.8d-3}{\cm^{-1}} - (-1.13)(\SI{20d-3}{\cm^{-1}}) \\
+  &= \SI{0.0918}{\cm^{-1}} \\
+  b_{\mathrm{min}} &= \SI{69.4d-3}{\cm^{-1}} - (-1.1)(\SI{20d-3}{\cm^{-1}}) \\
+  &= \SI{0.0914}{\cm^{-1}} \\
+  \delta b &= \SI{0.0918}{\cm^{-1}} - \SI{0.914}{\cm^{-1}} \\
+  &= \SI{0.0004}{\cm^{-1}}, \\
+  \therefore b &= \SI{0.0918(4)}{\cm^{-1}} \ \text{and}
+\end{align*}
+\[y = (\num{-1.1(1)})x + \SI{0.0918(4)}{\cm^{-1}}\]
+
+In comparison to the equation \(\frac{1}{\mdist{o}} = - \frac{1}{\mdist{i}} + \frac{1}{f}\), \(\frac{1}{f}\) can be determined by the y-intercept, 
+\begin{align*}
+  b &= \frac{1}{f} \\
+  &= \SI{0.0918(4)}{\cm^{-1}}
+\end{align*}
+so that \[f = \SI{10.89(5)}{\cm^{-1}}.\]
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{plot2.pdf}
+  \caption{Plot of \eqref{eq:a2}}
+  \label{fig:plot2}
+\end{figure}
+\pagebreak
+
+For Figure \ref{fig:plot2}, the calculations for both gradient and y-intercept are similar to the calculations for Figure \ref{fig:plot1}.
+\begin{align*}
+m_{\textrm{max}} &= \left(\frac{680-520}{60.0-46.0} \right)\si{\cm} \\ 
+&= \SI{11.43}{\cm} \\
+m_{\textrm{best}} &= \left(\frac{670-528}{60.0-46.0} \right)\si{\cm} \\
+&= \SI{10.14}{\cm}\\
+m_{\textrm{min}} &= \left(\frac{660-538}{60.0-46.0} \right)\si{\cm} \\
+&= \SI{8.714}{\cm} \\
+\delta m &= \SI{10.14}{\cm} - \SI{8.714}{\cm} \\
+&= \SI{1.426}{\cm} \\
+&\approx \SI{1}{\cm} \\
+\therefore m &= \SI{10(1)}{\cm}
+\end{align*}
+\begin{align*}
+b_{\textrm{max}} &= (680 -11.43(60)) \si{\cm^2} \\
+&= \SI{-6}{\cm^2} \\
+b_{\textrm{best}} &= (670 - 10.14(60)) \si{\cm^2} \\
+&= \SI{62}{\cm^2} \\
+b_{\textrm{min}} &= (660 - 8.714(60)) \si{\cm^2} \\
+&= \SI{137}{\cm^2} \\
+\delta b &= (137 - 62) \si{\cm^2} \\
+&= \SI{75}{\cm^2} \\
+&\approx \SI{80}{\cm^2}, \\
+\therefore b &= \SI{60(80)}{\cm^{2}} \ \text{and}
+\end{align*}
+\[y = (\SI{10(1)}{\cm})x + \SI{60(80)}{\cm^{2}}.\]
+
+Compared to the equation \(\mdist{o} \mdist{i} = f(\mdist{i} + \mdist{o})\), focal length \(f\) can be determined by using the  gradient of Figure \ref{fig:plot2}. 
+\begin{align*}
+  f &= m \\
+  &= \SI{10(1)}{\cm}
+\end{align*}
 
 \section{Discussion}
-From the experiment, we have established two values of \(f\) for L1 from two different methods. When we find f as an reciprocal of the y-intercept of a linear equation, the focal length is \SI{10.89(5)}{\cm}, whereas with \(f\) as the gradient of another linear equation, we got \SI{10(1)}{\cm}. With a discrepancy of 7.8\%, we consider the difference between the two methods to be significant enough to make a big difference. We can see that the value for the focal length through the y-intercept method to be much more precise than the other method, due to the lower uncertainty. However, this method might not yield an accurate result for the focal length of a lens.
+From the experiment, we have established two values of \(f\) for L1 from two different methods. When we find \(f\) as an reciprocal of the y-intercept of Equation \ref{eq:a1}, the focal length is \SI{10.9(4)}{\cm}, whereas with \(f\) as the gradient of Equation \ref{eq:a2}, we got \SI{10(1)}{\cm}. With a discrepancy of 9\%, it is well within error that we consider the two methods equivalent. We can see that the value for the focal length through the y-intercept method to be much more precise than the other method, due to the lower uncertainty. However, this method might not yield an accurate result for the focal length of a lens.
 
-There were many factors that may play into the considerable discrepancy that we observed here. First, the lenses might not be aligned properly to be parallel with the screen and the aperture despite our best efforts, and it might be not high enough for the centre of the arrow to be aligned with the centre of the lens. This might affect the sharpness of the image, however this factor might not even affect the outcome of the experiment.
+There were many factors that may play into the discrepancy that we observed here. First, the lenses might not be aligned properly to be parallel with the screen and the aperture despite our best efforts, and it might be not high enough for the centre of the arrow to be aligned with the centre of the lens. This might affect the sharpness of the image, however this factor might not even affect the outcome of the experiment.
 
 Another factor might be that we did not properly define what a sharp image looks like. Because we did not have a reference image available during the experiment, the sharpness of the image might vary slightly. Also, due to the presence of a halo around the edges of the image, it adds into the difficulty of determining if the image is at its sharpest. It might be better if the experiment was done with a camera-type equipment as cameras could determine if the image is at its sharpest.
 
+Lastly, Equation \ref{eq:t1} assumes that the lens L1 is a ‘thin lens’. This means that it does not take into account how the thickness of the lens have an effect optically, and therefore the actual focal length of L1 differs slightly with the values that were calculated here.
+
+In the future, we would suggest the following modifications to the experiment in the hopes that future results would show much more accurate results. First, set up a standard for image sharpness so that the experimental results are more accurate, or use a camera-type equipment as suggested on the last paragraph. We would also suggest to use a thinner converging/convex lens as this would minimise the optical effects and make the approximation more ``correct''.
+
+
 \section{Attributions}
-The iconography for the light source in Figure \ref{fig:p1} is ``Idea" by Adrien Coquet. Obtained from the Noun Project under the Creative Commons license.
+The iconography for the light source in Figure \ref{fig:p1} is ``Idea'' by Adrien Coquet. Obtained from the Noun Project under the Creative Commons license.
 
 \end{document}
