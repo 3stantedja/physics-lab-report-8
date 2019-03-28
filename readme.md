@@ -7,6 +7,7 @@ The following packages are in use:
 - `graphicx`
 - `wrapfig`
 - `microtype`
+- `lm` (as `lmodern`)
 - `mathtools`
 - `amssymb` (part of `amsmath`)
 - `textcomp` (not sure where I used it but just in case)
@@ -16,9 +17,12 @@ The following packages are in use:
 
 ## Compiling
 ``` bash
-$ pdflatex report.tex
+$ pdflatex report8.tex
 ```
 Run twice so the references show up --- otherwise it'll just show as (??).
 
 ## To-do
-[ ] make LaTeX document
+[x] make LaTeX document
+[x] finish the report
+[x] diagram and plots
+[ ] adding Mathematica notebook content in the report.
